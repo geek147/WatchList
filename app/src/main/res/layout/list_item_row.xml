@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.envious.domain.model.WatchItem"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/textShortName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{item.shortName}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textPrice"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{Double.toString(item.price)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textShortName" />
+
+        <TextView
+            android:id="@+id/textFullName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{item.fullName}"
+            app:layout_constraintTop_toBottomOf="@+id/textShortName"
+            app:layout_constraintEnd_toStartOf="@+id/textChange"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textChange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{Double.toString(item.changePrice24)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPrice"
+            app:layout_constraintStart_toEndOf="@+id/textFullName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,92 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.envious.watchlist"
+        minSdk 21
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+dependencies {
+
+    //module dependency
+    implementation project(":domain")
+    implementation project(":data")
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation Deps.kotlin_stdlib
+    implementation Deps.androidx_core_ktx
+    implementation Deps.androidx_app_compact
+    implementation Deps.constraint_layout
+    implementation Deps.kotlin_coroutines
+    implementation Deps.timber
+    implementation Deps.viewmodel_ktx
+    implementation Deps.livedata_ktx
+    implementation Deps.navigation_fragment_ktx
+    implementation Deps.navigation_ui_ktx
+    implementation Deps.elastic_view
+    implementation Deps.material_design
+    implementation Deps.edit_text_anim
+    implementation Deps.cropper
+    implementation Deps.glide
+    implementation Deps.koin_androidx_scope
+    implementation Deps.koin_viewmodel
+    implementation Deps.androidx_legacy_support
+
+    implementation Deps.fragment_test
+    implementation Deps.espresso_idling
+
+    testImplementation Deps.junit
+    androidTestImplementation Deps.junit_ext
+    androidTestImplementation Deps.espresso_core
+    androidTestImplementation Deps.coroutine_test
+    androidTestImplementation Deps.mockito
+    androidTestImplementation Deps.androidx_core_test
+    androidTestImplementation Deps.dex_maker_mockito
+
+    testImplementation Deps.mockito
+    testImplementation Deps.androidx_core_test
+    testImplementation Deps.coroutine_test
+}
