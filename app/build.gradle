@@ -33,7 +33,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
     testOptions.unitTests {
         includeAndroidResources = true
@@ -77,6 +76,7 @@ dependencies {
 
     implementation Deps.fragment_test
     implementation Deps.espresso_idling
+
 
     testImplementation Deps.junit
     androidTestImplementation Deps.junit_ext

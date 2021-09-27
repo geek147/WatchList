@@ -54,6 +54,9 @@ dependencies {
     implementation Deps.koin_viewmodel
     implementation Deps.okhttp_logger
 
+    implementation Deps.paging
+    implementation Deps.okhttp
+
     testImplementation Deps.junit
     testImplementation Deps.mockito
     testImplementation Deps.coroutine_test

@@ -13,12 +13,14 @@ import com.envious.watchlist.R
 import com.envious.watchlist.base.BaseFragment
 import com.envious.watchlist.databinding.FragmentWatchListBinding
 import com.envious.watchlist.util.EndlessRecyclerViewScrollListener
-import kotlinx.android.synthetic.main.fragment_watch_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContract.State, WatchListViewModel>() {
 
-    private lateinit var binding: FragmentWatchListBinding
+    private var _binding: FragmentWatchListBinding? = null
+
+    private val binding get() = _binding!!
+
     private lateinit var adapter: WatchListAdapter
 
     private lateinit var scrollListener: EndlessRecyclerViewScrollListener
@@ -31,12 +33,17 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWatchListBinding.inflate(layoutInflater)
+        _binding = FragmentWatchListBinding.inflate(layoutInflater)
         setupRecyclerView()
         dispatch(
             WatchListContract.Intent.GetFirstData
         )
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setupRecyclerView() {

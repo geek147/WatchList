@@ -2,8 +2,8 @@ package com.envious.watchlist.ui.watch
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.envious.domain.model.WatchItem
 import com.envious.watchlist.R
@@ -13,8 +13,9 @@ class WatchListAdapter(private val context: Context) : RecyclerView.Adapter<Watc
     private var listItem: MutableList<WatchItem> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchListAdapter.WatchItemViewHolder {
-        val binding: ListItemRowBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.list_item_row, parent, false)
-        return WatchItemViewHolder(binding)
+        return WatchItemViewHolder(
+            LayoutInflater.from(context).inflate(R.layout.list_item_row, parent, false)
+        )
     }
 
     override fun getItemId(position: Int): Long {
@@ -32,8 +33,11 @@ class WatchListAdapter(private val context: Context) : RecyclerView.Adapter<Watc
     }
 
     override fun onBindViewHolder(holderWatchItem: WatchItemViewHolder, position: Int) {
-        listItem[holderWatchItem.adapterPosition].let {
-            holderWatchItem.bindData(it, context)
+        with(holderWatchItem) {
+            binding.textShortName.text = listItem[position].shortName
+            binding.textFullName.text = listItem[position].fullName
+            binding.textPrice.text = listItem[position].price.toString()
+            binding.textChange.text = listItem[position].changePrice24.toString()
         }
     }
 
@@ -45,9 +49,7 @@ class WatchListAdapter(private val context: Context) : RecyclerView.Adapter<Watc
         }
     }
 
-    class WatchItemViewHolder(private val binding: ListItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(model: WatchItem, context: Context) {
-            binding.item = model
-        }
+    class WatchItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ListItemRowBinding.bind(view)
     }
 }

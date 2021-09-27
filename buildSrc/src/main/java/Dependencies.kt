@@ -80,4 +80,6 @@ object Deps {
     val gson = "com.google.code.gson:gson:${Versions.gson_version}"
     val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:3.2.0"
     val mockk = "io.mockk:mockk:1.11.0"
+    val paging = "androidx.paging:paging-runtime-ktx:3.0.0"
+    val okhttp = "com.squareup.okhttp3:okhttp:4.9.0"
 }
