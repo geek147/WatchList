@@ -5,12 +5,13 @@ import com.envious.domain.model.WatchItem
 class WatchListContract {
     sealed class Intent {
         object GetFirstData : Intent()
-        data class LoadNext(val page: Int) : Intent()
+        data class LoadNext(val page: Int, val isFromSwipe: Boolean) : Intent()
     }
 
     data class State(
         val viewState: ViewState = ViewState.Idle,
-        val listItem: List<WatchItem> = listOf()
+        val listItem: List<WatchItem> = listOf(),
+        val showLoading: Boolean = true
     )
 
     sealed class ViewState {

@@ -17,12 +17,14 @@ class WatchListViewModel(
     override fun onIntentReceived(intent: WatchListContract.Intent) {
         when (intent) {
             WatchListContract.Intent.GetFirstData -> getLocalWatchList()
-            is WatchListContract.Intent.LoadNext -> getRemoteWatchList(intent.page)
+            is WatchListContract.Intent.LoadNext -> getRemoteWatchList(intent.page, intent.isFromSwipe)
         }
     }
 
-    private fun getRemoteWatchList(page: Int) {
-        setState { copy(viewState = WatchListContract.ViewState.Loading) }
+    private fun getRemoteWatchList(page: Int, isFromSwipe: Boolean) {
+        if (!isFromSwipe) {
+            setState { copy(viewState = WatchListContract.ViewState.Loading) }
+        }
         viewModelScope.launch {
             when (
                 val result =
@@ -89,7 +91,7 @@ class WatchListViewModel(
                             )
                         }
                     } else {
-                        getRemoteWatchList(0)
+                        getRemoteWatchList(0, true)
                     }
                 }
             }

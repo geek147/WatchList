@@ -23,9 +23,10 @@ class WatchListRepositoryImpl(
                 if (watchListResult.isSuccessful) {
                     val mapperRemote = WatchItemRemoteMapper()
                     val remoteData = watchListResult.body()
-                    if (remoteData != null) {
+                    val items = remoteData?.data
+                    if (remoteData != null && !items.isNullOrEmpty()) {
                         val listData = mutableListOf<WatchItem>()
-                        remoteData.data?.forEach { item ->
+                        items.forEach { item ->
                             watchListDao.saveWatchItem(
                                 WatchItemEntity(
                                     id = item?.coinInfo?.id.orEmpty(),

@@ -85,6 +85,8 @@ dependencies {
     androidTestImplementation Deps.mockito
     androidTestImplementation Deps.androidx_core_test
     androidTestImplementation Deps.dex_maker_mockito
+    testImplementation Deps.mockito_kotlin
+    testImplementation Deps.mockk
 
     testImplementation Deps.mockito
     testImplementation Deps.androidx_core_test

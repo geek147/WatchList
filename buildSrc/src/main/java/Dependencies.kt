@@ -78,4 +78,6 @@ object Deps {
     val dex_maker_mockito = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.dex_maker_version}"
     val espresso_idling = "androidx.test.espresso:espresso-idling-resource:${Versions.espresso_core}"
     val gson = "com.google.code.gson:gson:${Versions.gson_version}"
+    val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:3.2.0"
+    val mockk = "io.mockk:mockk:1.11.0"
 }

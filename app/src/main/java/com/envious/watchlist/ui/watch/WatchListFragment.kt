@@ -56,7 +56,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
                 ) {
                     currentPage = page + 1
                     dispatch(
-                        WatchListContract.Intent.LoadNext(currentPage)
+                        WatchListContract.Intent.LoadNext(currentPage, false)
                     )
                 }
             }
@@ -69,7 +69,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
             swipeContainer.setOnRefreshListener {
                 currentPage += 1
                 dispatch(
-                    WatchListContract.Intent.LoadNext(currentPage)
+                    WatchListContract.Intent.LoadNext(currentPage, true)
                 )
             }
         }

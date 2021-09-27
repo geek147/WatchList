@@ -61,4 +61,6 @@ dependencies {
     androidTestImplementation Deps.espresso_core
     androidTestImplementation Deps.androidx_core_test
     androidTestImplementation Deps.coroutine_test
+    testImplementation Deps.mockito_kotlin
+    testImplementation Deps.mockk
 }
