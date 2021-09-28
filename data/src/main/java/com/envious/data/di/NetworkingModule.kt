@@ -1,7 +1,7 @@
 package com.envious.data.di
 
+import com.envious.data.BuildConfig
 import com.envious.data.remote.WatchListApiService
-import com.envious.data.util.Constants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 val networkingModule = module {
     single<WatchListApiService> {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.API_URL)
             .client(get<OkHttpClient>())
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(WatchListApiService::class.java)

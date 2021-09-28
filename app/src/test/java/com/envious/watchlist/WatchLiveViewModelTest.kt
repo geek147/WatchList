@@ -132,8 +132,8 @@ class WatchLiveViewModelTest {
             WatchListContract.Intent.LoadNext(page, isFromSwipe)
         )
 
-        assertEquals(observedStateList.last().viewState, WatchListContract.ViewState.SuccessLoadMore)
-        assertEquals(observedStateList.last().listItem[0].shortName, shortName)
+        assertEquals(WatchListContract.ViewState.SuccessLoadMore, observedStateList.last().viewState)
+        assertEquals(shortName, observedStateList.last().listItem[0].shortName)
         assertEquals(observedStateList.last().listItem[0].id, id)
     }
 }

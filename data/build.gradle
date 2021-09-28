@@ -18,7 +18,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "API_URL", "\"https://min-api.cryptocompare.com/data/top/\""
+        }
         release {
+            buildConfigField "String", "API_URL", "\"https://min-api.cryptocompare.com/data/top/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

@@ -76,6 +76,7 @@ dependencies {
 
     implementation Deps.fragment_test
     implementation Deps.espresso_idling
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 
     testImplementation Deps.junit
