@@ -4,8 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.envious.domain.usecase.GetWatchListUseCase
 import com.envious.domain.util.Result
 import com.envious.watchlist.base.BaseViewModel
-import com.envious.watchlist.util.State
-import com.envious.watchlist.util.ViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

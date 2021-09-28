@@ -98,6 +98,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
                     }
                     pgProgressList.visibility = View.GONE
                     adapter.setList(emptyList())
+                    adapter.notifyDataSetChanged()
                     recyclerview.visibility = View.GONE
                     swipeContainer.isRefreshing = false
                 }
@@ -110,6 +111,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
                     }
                     pgProgressList.visibility = View.GONE
                     adapter.setList(emptyList())
+                    adapter.notifyDataSetChanged()
                     recyclerview.visibility = View.GONE
                     swipeContainer.isRefreshing = false
                 }
@@ -141,6 +143,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
                     pgProgressList.visibility = View.GONE
                     recyclerview.visibility = View.VISIBLE
                     adapter.setList(state.listItem)
+                    adapter.notifyDataSetChanged()
                     swipeContainer.isRefreshing = false
                 }
             }
@@ -150,6 +153,7 @@ class WatchListFragment : BaseFragment<WatchListContract.Intent, WatchListContra
                     pgProgressList.visibility = View.GONE
                     recyclerview.visibility = View.VISIBLE
                     adapter.addData(state.listItem)
+                    adapter.notifyDataSetChanged()
                     swipeContainer.isRefreshing = false
                 }
             }

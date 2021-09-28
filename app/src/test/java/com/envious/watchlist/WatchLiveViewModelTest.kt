@@ -26,6 +26,10 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class WatchLiveViewModelTest {
 
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 

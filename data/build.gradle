@@ -55,7 +55,6 @@ dependencies {
     implementation Deps.okhttp_logger
 
     implementation Deps.paging
-    implementation Deps.okhttp
 
     testImplementation Deps.junit
     testImplementation Deps.mockito

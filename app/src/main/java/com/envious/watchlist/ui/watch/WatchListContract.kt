@@ -10,8 +10,7 @@ class WatchListContract {
 
     data class State(
         val viewState: ViewState = ViewState.Idle,
-        val listItem: List<WatchItem> = listOf(),
-        val showLoading: Boolean = true
+        val listItem: List<WatchItem> = listOf()
     )
 
     sealed class ViewState {
