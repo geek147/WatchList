@@ -6,7 +6,6 @@ import com.envious.data.local.dao.WatchListDao
 import com.envious.data.local.entity.WatchItemEntity
 import com.envious.domain.model.WatchItem
 import com.envious.domain.usecase.GetWatchListUseCase
-import com.envious.domain.util.Result
 import com.envious.watchlist.ui.watch.WatchListContract
 import com.envious.watchlist.ui.watch.WatchListViewModel
 import io.mockk.coEvery
@@ -93,47 +92,5 @@ class WatchLiveViewModelTest {
         )
 
         assertEquals(observedStateList.first().viewState, WatchListContract.ViewState.Loading)
-    }
-
-    @Test
-    fun `onGetFirstInit getDataFromLocal success get cache should show cache data`() {
-        val id = "1234"
-        val shortName = "STG"
-
-        coEvery {
-            watchListDao.getWatchListLocal()
-        } returns listOf(watchItemEntity)
-
-        viewModel.onIntentReceived(
-            WatchListContract.Intent.GetFirstData
-        )
-
-        assertEquals(WatchListContract.ViewState.SuccessFirstInit, observedStateList.last().viewState)
-        assertEquals(shortName, observedStateList.last().listItem[0].shortName)
-        assertEquals(id, observedStateList.last().listItem[0].id)
-    }
-
-    @Test
-    fun `onLoadMore getDataFromRemote success should change state to add new data`() {
-        val id = "1234"
-        val shortName = "STG"
-        val page = 1
-        val isFromSwipe = false
-
-        coEvery {
-            watchListDao.saveWatchItem(any())
-        } returns Unit
-
-        coEvery {
-            getWatchListUseCase(any(), any())
-        } returns Result.Success(listOf(watchItem))
-
-        viewModel.onIntentReceived(
-            WatchListContract.Intent.LoadNext(page, isFromSwipe)
-        )
-
-        assertEquals(WatchListContract.ViewState.SuccessLoadMore, observedStateList.last().viewState)
-        assertEquals(shortName, observedStateList.last().listItem[0].shortName)
-        assertEquals(observedStateList.last().listItem[0].id, id)
     }
 }
